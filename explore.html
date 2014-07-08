@@ -26,15 +26,29 @@ h2 {
   display: inline;
 }
 </style>
+<script src="./js/jquery-1.11.1.min.js"></script>
 <script>
 function goBack() {
     window.history.back()
+}
+function test() {
+  $.getJSON( "ajax/test.json", function( data ) {
+    var items = [];
+    $.each( data, function( key, val ) {
+      items.push( "<li id='" + key + "'>" + val + "</li>" );
+    });
+ 
+    $( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( "body" );
+  });
 }
 </script>
 </head>
 <body>
 <h1>Explore</h1>
 <button onclick="goBack()">Back</button>
-test
+<button onclick="test()">Test</button>
 </body>
 </html>
