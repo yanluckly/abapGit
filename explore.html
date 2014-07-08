@@ -32,7 +32,7 @@ function goBack() {
     window.history.back()
 }
 function test() {
-  $.getJSON( "ajax/test.json", function( data ) {
+  $.getJSON( "./data.json", function( data ) {
     var items = [];
     $.each( data, function( key, val ) {
       items.push( "<li id='" + key + "'>" + val + "</li>" );
