@@ -28,6 +28,9 @@ h2 {
 </style>
 <script src="./js/jquery-1.11.1.min.js"></script>
 <script>
+$( document ).ready(function() {
+  test();
+}
 function goBack() {
     window.history.back()
 }
@@ -39,7 +42,6 @@ function test() {
     });
  
     $( "<ul/>", {
-      "class": "my-new-list",
       html: items.join( "" )
     }).appendTo( "body" );
   });
