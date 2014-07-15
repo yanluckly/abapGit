@@ -25,33 +25,61 @@ h1 {
 h2 {
   display: inline;
 }
+h3 {
+  display: inline;
+  color: grey;
+  font-weight:normal;
+  font-size: smaller;
+}
 </style>
 <script src="./js/jquery-1.11.1.min.js"></script>
 <script>
-$( document ).ready(function() {
-  test();
-}
 function goBack() {
-    window.history.back()
+    window.history.back();
 }
+
+function shuffle(sourceArray) {
+
+    for (var n = 0; n < sourceArray.length - 1; n++) {
+        var k = n + Math.floor(Math.random() * (sourceArray.length - n));
+
+        var temp = sourceArray[k];
+        sourceArray[k] = sourceArray[n];
+        sourceArray[n] = temp;
+    }
+}
+
 function test() {
-  $.getJSON( "ajax/test.json", function( data ) {
-    var items = [];
-    $.each( data, function( key, val ) {
-      items.push( "<li id='" + key + "'>" + val + "</li>" );
-    });
- 
-    $( "<ul/>", {
-      "class": "my-new-list",
-      html: items.join( "" )
-    }).appendTo( "body" );
+  $.getJSON( "data.json", function( data ) {
+  var items = [];
+
+  $.each( data, function( key, val ) {
+    items.push( "<h2>" + 
+      val.title + 
+      "</h2>&nbsp;<a href='sapevent:install?" + 
+      key + 
+      "'>Clone</a><br><h3>" + 
+      key + 
+      "</h3><br>" + 
+      val.description );
+  });
+
+  shuffle(items);
+  
+  $('#content').html( items.join("<br><br>") );
+
   });
 }
 </script>
 </head>
-<body>
-<h1>Explore</h1>
-<button onclick="goBack()">Back</button>
-<button onclick="test()">Test</button>
+<body onload="test()">
+<h1>Explore</h1>&nbsp;<a href="javascript:goBack()">Back</a>
+<hr>
+<br>
+<div id="content"></div>
+<br>
+<br>
+<hr>
+<center><h3>Add your project? Create an issue in the tracker</h3></center>
 </body>
 </html>
