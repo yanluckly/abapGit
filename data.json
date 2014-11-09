@@ -7,6 +7,6 @@
   "https://github.com/larshp/abapOpenChecks.git": 
 	{ 
 		"title": "abapOpenChecks",
-		"description": "Extra checks for code inspector"
+		"description": "Open source checks for SAP Code Inspector / ABAP Test Cockpit"
 	}
 }
