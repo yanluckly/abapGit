@@ -8,7 +8,7 @@
 	{ 
 		"title": "abapOpenChecks",
 		"description": "Open source checks for SAP Code Inspector / ABAP Test Cockpit"
-	}
+	},
   "https://github.com/larshp/Datamatrix.git": 
 	{ 
 		"title": "Datamatrix",
