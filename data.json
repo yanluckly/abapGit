@@ -9,6 +9,11 @@
 		"title": "abapOpenChecks",
 		"description": "Open source checks for SAP Code Inspector / ABAP Test Cockpit"
 	},
+  "https://github.com/larshp/abapOrion.git": 
+	{ 
+		"title": "abapOrion",
+		"description": "Client implementation of Eclipse Orion protocol in ABAP for use with SAP HANA"
+	},	
   "https://github.com/larshp/Datamatrix.git": 
 	{ 
 		"title": "Datamatrix",
