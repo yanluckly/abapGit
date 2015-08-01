@@ -19,6 +19,11 @@
 		"title": "abapOpenReview",
 		"description": "ABAP Review Tool"
 	},		
+  "https://github.com/larshp/upDOWNci.git": 
+	{ 
+		"title": "upDOWNci",
+		"description": "Upload and download SAP Code Inspector variants in XML format"
+	},
   "https://github.com/larshp/Datamatrix.git": 
 	{ 
 		"title": "Datamatrix",
