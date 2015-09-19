@@ -101,9 +101,10 @@ function old() {
   });  
 }
 
+var output = [];
+
 function new_logic() {
   $.getJSON( "repos.json", function( data ) {
-    var output = [];
   
     $.each( data, function( key, val ) {
       $.getJSON( key, function( repo ) {
