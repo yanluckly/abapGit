@@ -79,57 +79,38 @@ function shuffle(sourceArray) {
     }
 }
 
-function old() {
-  $.getJSON( "data.json", function( data ) {
-  var items = [];
-
-  $.each( data, function( key, val ) {
-    items.push( "<h2>" + 
-      val.title + 
-      "</h2>&nbsp;<a href='sapevent:install?" + 
-      key + 
-      "'>Clone</a><br><h3>" + 
-      key + 
-      "</h3><br>" + 
-      val.description );
-  });
-
-  shuffle(items);
-  
-  $('#content').html( items.join("<br><br>") );
-
-  });  
-}
-
 var output = [];
 
-function new_logic() {
-  $.getJSON( "repos.json", function( data ) {
-  
-    $.each( data, function( key, val ) {
-      $.getJSON( key, function( repo ) {
-        output.push( "foo" + key + " " + repo.name + "<br>" );
-      }); 
-    });
-  
+function render() {
     shuffle(output);
-    $('#newcontent').html( output.join("<br><br>") );
-  });    
+    $('#newcontent').html( output.join("<br><br>") );   
 }
 
 function run() {
-  old();
-  new_logic();
+  $.getJSON( "repos.json", function( data ) {
+    $.each( data, function( key, val ) {
+      $.getJSON( key, function( repo ) {
+        output.push( "<h2>" + repo.name + "</h2>&nbsp;" + 
+          "<a href='sapevent:install?" + repo.clone_url + "'>Clone</a><br>" +
+          "<h3>" + repo.clone_url + "</h3><br>" + 
+          "<h3>Updated: " + repo.updated_at + "</h3><br>" + 
+          "<h3>Stars: " + repo.stargazers_count + "</h3><br>" + 
+          repo.description );
+        if( Object.keys(data).length == output.length ) {
+          render();
+        }
+      }); 
+    });
+  });  
 }
+
 </script>
 </head>
 <body onload="run()">
 <h1>Explore</h1>&nbsp;<a href="javascript:goBack()">Back</a>
 <hr>
 <br>
-<div id="content"></div>
-<br>
-<div id="newcontent"></div>
+<div id="newcontent">Loading</div>
 <br>
 <br>
 <hr>
