@@ -70,7 +70,6 @@ function goBack() {
 }
 
 function shuffle(sourceArray) {
-
     for (var n = 0; n < sourceArray.length - 1; n++) {
         var k = n + Math.floor(Math.random() * (sourceArray.length - n));
 
@@ -80,7 +79,7 @@ function shuffle(sourceArray) {
     }
 }
 
-function test() {
+function old() {
   $.getJSON( "data.json", function( data ) {
   var items = [];
 
@@ -99,15 +98,37 @@ function test() {
   
   $('#content').html( items.join("<br><br>") );
 
+  });  
+}
+
+function new() {
+  $.getJSON( "repos.json", function( data ) {
+  var output = [];
+
+  $.each( data, function( key, val ) {
+    output.push( key + "<br>" );
   });
+
+  shuffle(output);
+  
+  $('#newcontent').html( output.join("<br><br>") );
+
+  });    
+}
+
+function run() {
+  old();
+  new();
 }
 </script>
 </head>
-<body onload="test()">
+<body onload="run()">
 <h1>Explore</h1>&nbsp;<a href="javascript:goBack()">Back</a>
 <hr>
 <br>
 <div id="content"></div>
+<br>
+<div id="newcontent"></div>
 <br>
 <br>
 <hr>
