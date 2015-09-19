@@ -103,16 +103,16 @@ function old() {
 
 function new_logic() {
   $.getJSON( "repos.json", function( data ) {
-  var output = [];
-
-  $.each( data, function( key, val ) {
-    output.push( key + "<br>" );
-  });
-
-  shuffle(output);
+    var output = [];
   
-  $('#newcontent').html( output.join("<br><br>") );
-
+    $.each( data, function( key, val ) {
+      $.getJSON( key, function( data ) {
+        output.push( key + " " + data.name + "<br>" );
+      }); 
+    });
+  
+    shuffle(output);
+    $('#newcontent').html( output.join("<br><br>") );
   });    
 }
 
