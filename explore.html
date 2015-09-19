@@ -106,8 +106,8 @@ function new_logic() {
     var output = [];
   
     $.each( data, function( key, val ) {
-      $.getJSON( key, function( data ) {
-        output.push( key + " " + data.name + "<br>" );
+      $.getJSON( key, function( repo ) {
+        output.push( "foo" + key + " " + repo.name + "<br>" );
       }); 
     });
   
