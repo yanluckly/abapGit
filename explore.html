@@ -70,6 +70,7 @@ function goBack() {
 }
 
 function shuffle(sourceArray) {
+
     for (var n = 0; n < sourceArray.length - 1; n++) {
         var k = n + Math.floor(Math.random() * (sourceArray.length - n));
 
@@ -79,38 +80,34 @@ function shuffle(sourceArray) {
     }
 }
 
-var output = [];
+function test() {
+  $.getJSON( "data.json", function( data ) {
+  var items = [];
 
-function render() {
-    shuffle(output);
-    $('#newcontent').html( output.join("<br><br>") );   
+  $.each( data, function( key, val ) {
+    items.push( "<h2>" + 
+      val.title + 
+      "</h2>&nbsp;<a href='sapevent:install?" + 
+      key + 
+      "'>Clone</a><br><h3>" + 
+      key + 
+      "</h3><br>" + 
+      val.description );
+  });
+
+  shuffle(items);
+  
+  $('#content').html( items.join("<br><br>") );
+
+  });
 }
-
-function run() {
-  $.getJSON( "repos.json", function( data ) {
-    $.each( data, function( key, val ) {
-      $.getJSON( key, function( repo ) {
-        output.push( "<h2>" + repo.name + "</h2>&nbsp;" + 
-          "<a href='sapevent:install?" + repo.clone_url + "'>Clone</a><br>" +
-          "<h3>" + repo.clone_url + "</h3><br>" + 
-          "<h3>Updated: " + repo.updated_at + "</h3><br>" + 
-          "<h3>Stars: " + repo.stargazers_count + "</h3><br>" + 
-          repo.description );
-        if( Object.keys(data).length == output.length ) {
-          render();
-        }
-      }); 
-    });
-  });  
-}
-
 </script>
 </head>
-<body onload="run()">
+<body onload="test()">
 <h1>Explore</h1>&nbsp;<a href="javascript:goBack()">Back</a>
 <hr>
 <br>
-<div id="newcontent">Loading</div>
+<div id="content"></div>
 <br>
 <br>
 <hr>
