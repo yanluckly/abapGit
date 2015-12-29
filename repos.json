@@ -29,6 +29,11 @@
 		"title": "FORMfactor",
 		"description": "Refactor FORMs to local classes"
 	},	
+  "https://github.com/gregorwolf/ebid-abap-client.git": 
+	{ 
+		"title": "ebid-abap-client",
+		"description": "ABAP Client for the http://www.unternehmensverzeichnis.org REST API"
+	},	
   "https://github.com/larshp/Datamatrix.git": 
 	{ 
 		"title": "Datamatrix",
