@@ -4,6 +4,11 @@
 		"title": "Foobar",
 		"description": "This is a test project, try installing it by clicking clone"
 	},
+  "https://github.com/larshp/abapCov.git":
+	{ 
+		"title": "abapCov",
+		"description": "Upload ABAP unit test code coverage to codecov.io"
+	},  
   "https://github.com/larshp/abapOpenChecks.git": 
 	{ 
 		"title": "abapOpenChecks",
