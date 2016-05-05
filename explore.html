@@ -4,63 +4,33 @@
 <style type="text/css">
 body {
   font-family: Arial,Helvetica,sans-serif;
-  background: #DEF1F2;
+  background: #E8E8E8;
 }
-a:link {
-  color: blue;
+a, a:visited {
+  color:            #4078c0;
+  text-decoration:  none;
 }
-a:visited {
-  color: blue;
+a:hover, a:active {
+  text-decoration:  underline;
 }
-a.grey:link {
-  color: grey;
-  font-size: smaller;
+div#header {
+  display:          block;
+  margin-top:       0.5em;
+  padding-bottom:   0.5em;
+  border-bottom:    3px double lightgrey;
 }
-a.grey:visited {
-  color: grey;
-  font-size: smaller;
+div#toc {
+  display:          block;
+  background-color: #f2f2f2;
+  padding:          1em;
 }
-a.plain:link {
-  color: black;
-  text-decoration: none;
-}
-a.plain:visited {
-  color: black;
-  text-decoration: none;
-}
-a.white:link {
-  color: white;
-}
-a.white:visited {
-  color: white;
-}
-h1 {
-  display: inline;
-}
-h2 {
-  display: inline;
-}
-h3 {
-  display: inline;
-  color: grey;
-  font-weight:normal;
-  font-size: smaller;
-}
-pre {
-  display: inline;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 5px;
-}
-th {
-  background: #e5e5e5;
-}
-td {
- background: #F8FCFC;
+div#footer {
+  display:          block;
+  margin-bottom:    1em;
+  padding-top:      0.5em;
+  border-top:       3px double lightgrey;
+  color:            grey;
+  text-align:       center;
 }
 </style>
 <script src="./js/jquery-1.11.1.min.js"></script>
@@ -80,37 +50,39 @@ function shuffle(sourceArray) {
     }
 }
 
-function test() {
+function run() {
+  /* global $ */
   $.getJSON( "repos.json", function( data ) {
   var items = [];
 
   $.each( data, function( key, val ) {
-    items.push( "<h2>" + 
-      val.title + 
-      "</h2>&nbsp;<a href='sapevent:install?" + 
-      key + 
-      "'>Clone</a><br><h3>" + 
-      key + 
-      "</h3><br>" + 
+    items.push( "<h2>" +
+      val.title +
+      "</h2>&nbsp;<a href='sapevent:install?" +
+      key +
+      "'>Clone</a><br><h3>" +
+      key +
+      "</h3><br>" +
       val.description );
   });
 
   shuffle(items);
-  
+
   $('#content').html( items.join("<br><br>") );
 
   });
 }
 </script>
 </head>
-<body onload="test()">
+<body onload="run()">
+<div id="header">
 <h1>Explore</h1>&nbsp;<a href="javascript:goBack()">Back</a>
-<hr>
-<br>
+</div>
+<div id="toc">
 <div id="content"></div>
-<br>
-<br>
-<hr>
-<center><h3>Add your project? Create an issue in the tracker</h3></center>
+</div>
+<div id="footer">
+<h3>Add your project? Create an issue in the tracker</h3>
+</div>
 </body>
 </html>
